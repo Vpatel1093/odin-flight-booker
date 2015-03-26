@@ -1,0 +1,13 @@
+<h1>Search Flight</h1>
+<%= form_tag root_path, method: :get do %>
+  <p>
+    <%= select_tag :from, options_for_select(@airports), prompt: "From" %>
+    <%= select_tag :to, options_for_select(@airports), prompt: "To" %>
+    <%= select_tag :departure, options_for_select(@departures), prompt: "Departure" %>
+    <%= select_tag :passengers, options_for_select(@passengers), prompt: "Passengers" %>
+  </p>
+
+  <p>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
