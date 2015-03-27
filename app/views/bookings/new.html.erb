@@ -1,0 +1,21 @@
+<h1>New booking</h1>
+<p>
+  Flight from <%= @flight.from_airport.code %> to <%= @flight.to_airport.code %><br>
+  Departure: <%= @flight.departure %><br>
+  Flight duration: <%= @flight.duration %>
+</p>
+
+<%= form_for @booking do |f| %>
+  <%= f.fields_for :passengers do |passengers_form| %>
+    <p>
+      <%= passengers_form.text_field :name, placeholder: "Name" %>
+      <%= passengers_form.email_field :email, placeholder: "Email" %>
+    </p>
+  <% end %>
+
+  <%= hidden_field_tag(:passengers, params[:passengers]) %>
+  <%= f.hidden_field :flight_id, value: params[:flight_id] %>
+  <p>
+    <%= f.submit "Book Flight" %>
+  </p>
+<% end %>

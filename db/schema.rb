@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325235916) do
+ActiveRecord::Schema.define(version: 20150327072426) do
 
   create_table "airports", force: :cascade do |t|
     t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "flight_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bookings", ["flight_id"], name: "index_bookings_on_flight_id"
 
   create_table "flights", force: :cascade do |t|
     t.integer  "to_airport_id"
@@ -27,5 +35,22 @@ ActiveRecord::Schema.define(version: 20150325235916) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "passenger_bookings", force: :cascade do |t|
+    t.integer "booking_id"
+    t.integer "passenger_id"
+  end
+
+  add_index "passenger_bookings", ["booking_id"], name: "index_passenger_bookings_on_booking_id"
+  add_index "passenger_bookings", ["passenger_id"], name: "index_passenger_bookings_on_passenger_id"
+
+  create_table "passengers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "passengers", ["email"], name: "index_passengers_on_email", unique: true
 
 end
