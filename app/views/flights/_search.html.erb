@@ -1,0 +1,12 @@
+<%= form_tag root_path, method: :get do %>
+  <p>
+    <%= select_tag :from, options_for_select(@airports, params[:from]), prompt: "From"  %>
+    <%= select_tag :to, options_for_select(@airports, params[:to]), prompt: "To" %>
+    <%= select_tag :departure, options_for_select(@departures, params[:departure]), prompt: "Departure" %>
+    <%= select_tag :passengers, options_for_select(@passengers, params[:passengers]), prompt: "Passengers" %>
+  </p>
+
+  <p>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>

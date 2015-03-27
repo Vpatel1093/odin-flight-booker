@@ -1,0 +1,14 @@
+<%= form_tag root_path, method: :get do %>
+  <%= hidden_field_tag :passengers, params[:passengers] %>
+  <table>
+    <tr>
+      <th></th>
+      <th>From</th>
+      <th>To</th>
+      <th>Departure</th>
+      <th>Duration</th>
+    </tr>
+    <%= render @flights %>
+  </table>
+  <%= submit_tag "Select Flight" %>
+<% end %>
