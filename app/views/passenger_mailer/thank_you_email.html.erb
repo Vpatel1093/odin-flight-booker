@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %>, thank you for your booking at our site.</h1>
+    <p>
+      You can find the details below:<br>
+      <strong>From: </strong><%= @booking.flight.from_airport.code %><br>
+      <strong>To: </strong><%= @booking.flight.to_airport.code %><br>
+      <strong>Departure: </strong><%= @booking.flight.departure %><br>
+      <strong>Duration: </strong><%= @booking.flight.duration %>
+    </p>
+    </body>
+</html>
